@@ -1,0 +1,126 @@
+.tabs {
+    display: flex;
+    background-color: rgba($color: white, $alpha: 0.25);
+    padding: 10px;
+    gap: 14px;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    margin: 12px;
+    margin-top: 50px
+}
+
+.tab {
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+}
+
+
+.tab-tile {
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    i {
+        color: #222;
+    }
+    transition: all .2s ease-out;
+}
+
+.tab.selected .tab-tile{
+    transform: translateY(-50%);
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0, 0, 0, 2);
+}
+
+
+//STYLES FOR THE DAB TILE BACKGROUNDS 'SHAPE'
+.tab-tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.2s ;
+
+    opacity: 0.8;
+}
+
+.bookmarks-tab .tab-tile::before{
+    background: linear-gradient(45deg, #f8b5a5, #e2d2fd); 
+}
+
+.todos-tab .tab-tile::before{
+    background: linear-gradient(45deg, #a2ffff, #ffbdde); 
+}
+
+.notes-tab .tab-tile::before{
+    background: linear-gradient(45deg, #d2cdff, #5fffbc); 
+}
+
+.pedidos-tab .tab-tile::before{
+    background: linear-gradient(45deg, #5fffbc, #d2cdff); 
+    
+}
+
+.clientes-tab .tab-tile::before{
+    background: linear-gradient(45deg, #ffbdde, #a2ffff); 
+}
+
+.garantias-tab .tab-tile::before{
+    background: linear-gradient(45deg, #e2d2fd, #f8b5a5); 
+}
+
+.tab-tile:hover::before {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.tab.selected .tab-tile::before {
+    border-radius: 50%;
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 0px 7px 17px rgba(black, 0.3);
+
+    transition-delay: 0.2s;
+}
+
+// END OF TAB TILE BACKGROUND 'SHAPE' STYLES
+
+
+
+
+// STYLES FOR THE UNDERLINE EFECT
+
+.tab::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: auto;
+
+    
+    transition: all 0.2s;
+
+    //hide by default
+    opacity: 0;
+    transform: scaleX(0);
+
+   
+}
+
+.tab.selected::after{
+    opacity: 1;
+    transform: scaleX(1);
+    transition-delay: .28s;
+}
+
+.tab.selected {
+    outline: none;
+}
