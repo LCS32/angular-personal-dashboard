@@ -1,4 +1,4 @@
-import { animate, query, style, transition, trigger } from '@angular/animations';
+import { animate, group, query, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -8,43 +8,94 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('routeAnim', [
-      transition('* => *', [
+      transition(':increment', [
         style({
-          position: 'relative'
+          position: 'relative',
+          overflow: 'hidden',
         }),
 
         query(':enter, :leave', [
           style({
+            // display: 'block',
             position: 'absolute',
             top: 0,
             left: 0,
-            width: '100%'
+            width: '100%',
+            height: '100%'
           })
-        ], { optional: true }),
-        query(':enter', [
-          style({
-            opacity: 0
-          })
-        ], { optional: true }),
-        query(':leave', [ 
-          style({
-            display: 'block'
-          }),
-          animate(1000, style({
-            opacity: 0
-          }))
         ], { optional: true }),
 
-        query(':enter', [
+        // query(':enter', [
+        //   style({
+        //     opacity: 0,
+        //   })
+        // ], { optional: true }),
+        
+        group([
+          query(':leave', [ 
+            animate('200ms ease-in', style({
+              opacity: 0,
+              transform: 'translateX(-50px)'
+            }))
+          ], { optional: true }),
+          query(':enter', [
+            style({
+              transform: 'translateX(50px)',
+              opacity: 0
+            }),
+            animate('200ms 120ms ease-out', style({
+              opacity: 1,
+              transform: 'translateX(0px)'
+            }))
+          ], { optional: true })
+        ])
+        
+        
+      ]),
+
+      transition(':decrement', [
+        style({
+          position: 'relative',
+          overflow: 'hidden',
+        }),
+
+        query(':enter, :leave', [
           style({
-            opacity: 0,
-            display: 'block',
+            // display: 'block',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
             height: '100%'
-          }),
-          animate(1000, style({
-            opacity: 1
-          }))
-        ], { optional: true })
+          })
+        ], { optional: true }),
+
+        // query(':enter', [
+        //   style({
+        //     opacity: 0,
+        //   })
+        // ], { optional: true }),
+        
+        group([
+          query(':leave', [ 
+            animate('200ms ease-in', style({
+              opacity: 0,
+              transform: 'translateX(50px)'
+            }))
+          ], { optional: true }),
+          query(':enter', [
+            style({
+              transform: 'translateX(-50px)',
+              opacity: 0
+            }),
+            animate('250ms 120ms ease-out', style({
+              opacity: 1,
+              transform: 'translateX(0px)'
+            }))
+          ], { optional: true })
+        ])
+        
+        
       ])
     ])
   ],
@@ -53,7 +104,7 @@ export class AppComponent {
   title: any;
   
   prepareRoute(outlet: RouterOutlet) {
-    if(outlet.isActivated) return outlet.activatedRoute.snapshot.url
+    if(outlet.isActivated) return outlet.activatedRouteData['tab']
   }
     
 }
