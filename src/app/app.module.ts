@@ -11,6 +11,8 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { GarantiasComponent } from './garantias/garantias.component';
 import { BookmarkTileComponent } from './bookmark-tile/bookmark-tile.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -22,11 +24,14 @@ import { BookmarkTileComponent } from './bookmark-tile/bookmark-tile.component';
     PedidosComponent,
     ClientesComponent,
     GarantiasComponent,
-    BookmarkTileComponent
+    BookmarkTileComponent,
+    InicioComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

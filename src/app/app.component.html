@@ -5,9 +5,8 @@
     <h2>Jueves, 10 de Noviembre</h2>
   </div>
   
-  <div class="content-section">
-    <router-outlet></router-outlet>
-    <!-- Component goes here -->
+  <div class="content-section" [@routeAnim]="prepareRoute(outlet)" >
+    <router-outlet #outlet="outlet"></router-outlet>
   </div>
 
   <div class="bottom-section">
