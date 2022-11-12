@@ -13,6 +13,10 @@ import { GarantiasComponent } from './garantias/garantias.component';
 import { BookmarkTileComponent } from './bookmark-tile/bookmark-tile.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AddNoteComponent } from './add-note/add-note.component';
+import { NoteCardComponent } from './note-card/note-card.component';
+import { FormsModule } from '@angular/forms';
+import { EditNoteComponent } from './edit-note/edit-note.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +30,17 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     GarantiasComponent,
     BookmarkTileComponent,
     InicioComponent,
+    AddNoteComponent,
+    NoteCardComponent,
+    EditNoteComponent,
+    
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

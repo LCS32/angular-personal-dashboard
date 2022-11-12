@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddNoteComponent } from './add-note/add-note.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { EditNoteComponent } from './edit-note/edit-note.component';
 import { GarantiasComponent } from './garantias/garantias.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { NotesComponent } from './notes/notes.component';
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'pedidos', component: PedidosComponent, data: { tab: 5 } },
   { path: 'clientes', component: ClientesComponent, data: { tab: 6 } },
   { path: 'garantias', component: GarantiasComponent, data: { tab: 7 }},
+  { path: 'notes/add', component: AddNoteComponent },
+  { path: 'notes/:id', component: EditNoteComponent },
   // { path: '**', redirectTo: 'inicio' },
 ];
 
