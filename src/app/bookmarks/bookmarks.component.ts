@@ -12,4 +12,5 @@ export class BookmarksComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }
