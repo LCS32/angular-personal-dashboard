@@ -1,5 +1,7 @@
+import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Note } from '../shared/note.model';
 import { NoteService } from '../shared/note.service';
 
@@ -14,17 +16,25 @@ export class EditNoteComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private noteService: NoteService
+    private noteService: NoteService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      const idParam: any = paramMap.get('id')
-      console.log(idParam)
-
+      const idParam: any = paramMap.get('id');
       this.note = this.noteService.getNote(idParam);
-      console.log(this.note)
     })
+  }
+
+  onFormSubmit(form: NgForm) {
+    this.noteService.updateNote(this.note!.id, form.value);
+    this.router.navigateByUrl('/notes');
+  }
+
+  deleteNote(){
+    this.noteService.deleteNote(this.note!.id);
+    this.router.navigateByUrl('/notes');
   }
 
 }
