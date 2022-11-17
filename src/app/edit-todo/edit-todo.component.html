@@ -1,1 +1,20 @@
-<p>edit-todo works!</p>
+<div class="edit-todo-wrapper container has-blurred-white-bg">
+    <h2 class="is-bold">Editar Tarea</h2>
+    
+    <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+        <p *ngIf="!todo">No hay tareas pendientes</p>
+        <div class="form-field" *ngIf="todo">
+            <input [ngModel]="todo.text" name="text" #textField="ngModel" class="textbox" type="text" placeholder="Introduce una tarea..." required minlength="3">
+            <ng-container *ngIf="textField.invalid">
+                <p *ngIf="textField!.errors!['required']">Introduce una tarea...</p>
+                <p *ngIf="textField!.errors!['minlength']">Debe tener al menos 3 caracteres</p>
+            </ng-container>
+        </div>
+
+        <div class="buttons-container">
+            <a class="btn" routerLink="../">Cancelar</a>
+            <button class="btn align-end">Guardar Tarea</button>
+        </div>
+    
+    </form>
+</div>
