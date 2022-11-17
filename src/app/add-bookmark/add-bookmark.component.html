@@ -1,0 +1,23 @@
+<div class="add-bookmark-wrapper container has-blurred-white-bg">
+    <h2 class="is-bold">Nuevo Marcador</h2>
+    
+    <form #form="ngForm" ngNativeValidate (ngSubmit)="onFormSubmit(form)">
+        <div class="form-field">
+            <label class="form-label">Nombre</label>
+            <input ngModel name="name" #textField="ngModel" class="textbox" type="text" placeholder="Introduce un nombre..." minlength="3" autocomplete="off">
+  
+        </div>
+
+        <div class="form-field">
+            <label class="form-label">Url</label>
+            <input ngModel name="url" #textField="ngModel" class="textbox" type="url" placeholder="Introduce una página..." required minlength="3" autocomplete="off">
+       
+        </div>
+
+        <div class="buttons-container">
+            <a class="btn" routerLink="../">Cancelar</a>
+            <button class="btn align-end">Crear Marcador</button>
+        </div>
+    
+    </form>
+</div>
