@@ -11,7 +11,14 @@
     flex-wrap: wrap;
 }
 
-.add-btn i {
+.add-btn span {
     margin-right: 6px ;
     margin-left: -3px;
 }
+
+.manage-btn span {
+    margin-right: 8px ;
+    margin-left: -3px;
+    opacity: 0.9;
+}
+

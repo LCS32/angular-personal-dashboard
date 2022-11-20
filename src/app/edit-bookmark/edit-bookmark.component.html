@@ -1,0 +1,25 @@
+<div class="edit-bookmark-wrapper">
+    <p *ngIf="!bookmark">Selecciona un marcador válido</p>
+
+    <ng-container *ngIf="bookmark">
+        <h2 class="is-bold">{{bookmark.name}}</h2>
+
+        <form #form="ngForm" ngNativeValidate (ngSubmit)="onFormSubmit(form)">
+            <div class="form-field">
+                <label class="form-label">Nombre</label>
+                <input [ngModel]="bookmark.name" name="name" #textField="ngModel" class="textbox" type="text" placeholder="Introduce un nombre..." minlength="3" autocomplete="off">
+            </div>
+
+            <div class="form-field">
+                <label class="form-label">Url</label>
+                <input [ngModel]="bookmark.url" name="url" #textField="ngModel" class="textbox" type="url" placeholder="Introduce una página..." required minlength="3" autocomplete="off">
+            </div>
+
+            <div class="buttons-container">
+                <a class="btn" routerLink="../">Cancelar</a>
+                <button type="button" class="btn" (click)="delete()">Borrar</button>
+                <button class="btn align-end">Guardar</button>
+            </div>
+        </form>
+    </ng-container>
+</div>
