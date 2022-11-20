@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NotificationService } from '../shared/notification.service';
 import { Todo } from '../shared/todo.model';
 
 @Component({
@@ -13,17 +14,21 @@ export class TodoItemComponent implements OnInit {
   @Output() editClick: EventEmitter<void> = new EventEmitter();
   @Output() deleteClick: EventEmitter<void> = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private notificationService: NotificationService
+  ) { }
 
   ngOnInit(): void {
   }
 
   onEditClick(){
     this.editClick.emit()
+    
   }
 
   onDeleteClick(){
     this.deleteClick.emit()
+    this.notificationService.show('Tarea borrada')
   }
 
 }

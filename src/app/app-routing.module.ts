@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'bookmarks/add', component: AddBookmarkComponent},
   { path: 'bookmarks/manage', component: ManageBookmarksComponent, children: [
     { path: ':id', component: EditBookmarkComponent},
-  ]},
+]},
   { path: 'todos', component: TodosComponent, data: { tab: 3 } },
   { path: 'todos/add', component: AddTodoComponent },
   { path: 'todos/:id', component: EditTodoComponent },
