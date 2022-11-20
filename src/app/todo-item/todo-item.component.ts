@@ -23,7 +23,7 @@ export class TodoItemComponent implements OnInit {
 
   onEditClick(){
     this.editClick.emit()
-    
+    this.notificationService.show('Tarea marcada como realizada')
   }
 
   onDeleteClick(){
